@@ -1,5 +1,6 @@
 package com.josemascaro.coderswag.Controller
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,7 +24,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = CategoryRecycleAdapter(this,DataService.categories)
+        adapter = CategoryRecycleAdapter(this, DataService.categories) {
+            category ->
+
+            val productIntent = Intent(this, ProductsActivity::class.java)
+
+            startActivity(productIntent)
+        }
         categoryListView.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
