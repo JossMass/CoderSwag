@@ -13,6 +13,7 @@ import com.josemascaro.coderswag.Adapters.CategoryRecycleAdapter
 import com.josemascaro.coderswag.Model.Category
 import com.josemascaro.coderswag.R
 import com.josemascaro.coderswag.Services.DataService
+import com.josemascaro.coderswag.Utilities.EXTRA_CATEGORY
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             category ->
 
             val productIntent = Intent(this, ProductsActivity::class.java)
-
+            productIntent.putExtra(EXTRA_CATEGORY,category.title)
             startActivity(productIntent)
         }
         categoryListView.adapter = adapter
